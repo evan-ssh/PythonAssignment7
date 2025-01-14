@@ -1,6 +1,9 @@
 def main():
  groceries = OpenGroceries()
- print(groceries)
+ print(groceries[0])
+ print(f"*{groceries[1]}")
+ print(f"*{groceries[2]}")
+ print(f"*{groceries[3]}")
 
 def OpenGroceries():
  try:
