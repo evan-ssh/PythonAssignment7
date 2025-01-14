@@ -10,5 +10,4 @@ def OpenGroceries():
     print(row)
  except FileNotFoundError as e:
   print(f"File wasn't found check directory{e}")
-  return groceries
-main()
+ return groceries
