@@ -8,6 +8,8 @@ def main():
     CreateEmails(contact)
    elif command == 2:
     ListContacts(contact)
+   elif command == 3:
+    AddEmails(contact)
   except ValueError:
    print("Enter a command")
 
@@ -25,6 +27,16 @@ def OpenEmails():
   print(f"Could not find file check directory{e}")
  return contact
 
+def SaveEmails(contact):
+ try:
+  with open("contacts_emails.csv","w",newline='') as file:
+   writer = csv.writer(file)
+   writer = writer.writerows(contact)
+ except PermissionError:
+  print("User does not have permissions to save emails")
+ except Exception as e:
+  print(f"An error occured while saving to file{e}")
+  
 def CreateEmails(contact):
  while True:
   print(f"{'Email Creator':>25}")
@@ -44,7 +56,14 @@ def CreateEmails(contact):
   print(f"{'<===Emails Sent===>':25}")
   break
  
-def ListContacts(contacts):
- for i, (name,last_name,email) in enumerate(contacts):
+def ListContacts(contact):
+ for i, (name,last_name,email) in enumerate(contact):
   print(f"{i}. Name:{name} LastName:{last_name} Email:{email}")
+
+def AddEmails(contact):
+ first_name = input("Enter First Name:")
+ last_name = input("Enter a last name")
+ email = input("Enter an Email")
+ contact.append([first_name,last_name,email])
+ SaveEmails(contact)
 main()
