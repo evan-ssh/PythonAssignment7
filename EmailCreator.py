@@ -1,10 +1,14 @@
 import csv
 def main():
- contact = OpenEmails()
- command = int(input("Enter a command"))
- if command == 1:
-  CreateEmails(contact)
-  
+ while True:
+  contact = OpenEmails()
+  command = int(input("Enter a command"))
+  if command == 1:
+   CreateEmails(contact)
+  elif command == 2:
+   ListContacts(contact)
+
+
 def OpenEmails():
  try:
   contact = []
@@ -20,12 +24,25 @@ def OpenEmails():
  return contact
 
 def CreateEmails(contact):
- for first_name,last_name,email in contact:
-  print(f"To:	     {email}")
-  print(f"From:	 noreply@deals.com")
-  print(f"Subject: Deals!\n")
-  print(f"Hi {first_name},\n")
-  print(f"We've got some great deals for you. Check our website!")
-
-
+ while True:
+  print(f"{'Email Creator':>25}")
+  reps_name = input("Enter name of Representative")
+  if not reps_name:
+   print("Cannot Continue Without Reps Name")
+   continue
+  for first_name,last_name,email in contact:
+   print("===================================")
+   print(f"To: {email}")
+   print(f"From: noreply@deals.com")
+   print(f"Subject: Deals!\n")
+   print(f"Hi {first_name},\n")
+   print(f"We've got some great deals for you.\n Check our website!")
+   print(f"~{reps_name}")
+   print("===================================")
+  print(f"{'<===Emails Sent===>':25}")
+  break
+ 
+def ListContacts(contacts):
+ for i, (name,last_name,email) in enumerate(contacts):
+  print(f"{i}. Name:{name} LastName:{last_name} Email:{email}")
 main()
