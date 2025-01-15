@@ -1,12 +1,26 @@
 def main():
  players = {"Elizabeth":{"Wins":"41","Losses":"22","Ties":"11"},"Jimmy":{"Wins":"41","Losses":"22","Ties":"11"},"Timmy":{"Wins":"41","Losses":"22","Ties":"11"}}
- command = int(input("Enter a command"))
- if command == 1:
-  SearchPlayer(players)
- elif command == 2:
+ while True:
+  try:
+   command = int(input("Enter a command"))
+   if command < 1 or command > 4:
+    print("Enter a valid command")
+   if command == 1:
+    SearchPlayer(players)
+   elif command == 2:
     ListPlayers(players)
- elif command == 3:
-   AddPlayer(players)
+   elif command == 3:
+    AddPlayer(players)
+   elif command == 4:
+    return False
+  except ValueError:
+   print("Enter a valid command")
+def DisplayMenu():
+   print("COMMAND MENU")
+   print("1 - Search a Player")
+   print("2 - List Players")
+   print("3 - Add a player")
+   print("4 - Exit Program")
 def SearchPlayer(players):
  for name,values in players.items():
   enter_name = input("Enter a player to Search for")
