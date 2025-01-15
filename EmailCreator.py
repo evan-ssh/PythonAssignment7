@@ -2,12 +2,14 @@ import csv
 def main():
  while True:
   contact = OpenEmails()
-  command = int(input("Enter a command"))
-  if command == 1:
-   CreateEmails(contact)
-  elif command == 2:
-   ListContacts(contact)
-
+  try:
+   command = int(input("Enter a command"))
+   if command == 1:
+    CreateEmails(contact)
+   elif command == 2:
+    ListContacts(contact)
+  except ValueError:
+   print("Enter a command")
 
 def OpenEmails():
  try:
