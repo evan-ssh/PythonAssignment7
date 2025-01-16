@@ -22,10 +22,11 @@ def DisplayMenu():
    print("3 - Add a player")
    print("4 - Exit Program")
 def SearchPlayer(players):
- enter_name = input("Enter a player to Search for")
+ ListPlayers(players)
+ enter_name = input("Enter a player to lookup their stats:").strip().title()
  for name,values in players.items():
   if enter_name == name:
-   print(f"{enter_name},{values['Wins']}\nLosses:{values['Losses']}\n{values['Ties']}")
+   print(f"{enter_name}:\nWins:{values['Wins']}\nLosses:{values['Losses']}\nTies:{values['Ties']}")
    break
  else:
   print("Player not in stats list")
