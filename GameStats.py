@@ -38,7 +38,7 @@ def AddPlayer(players):
    wins = input("Enter the wins")
    losses = input("Enter the losses")
    ties =  input("Enter the ties")
-   players[name] = [wins,losses,ties]
+   players[name] = {"Wins":wins,"Losses":losses,"Ties":ties}
    print(f"Added stats for {name}")
-   ListPlayers(players)
+
 main()
